@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>crud</title>
+	<meta charset="utf-8"> 	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- scan-barcode-master -->
+	<link rel="stylesheet" href="js/scan-barcode-master/style.css" />
+	<script type="text/javascript" src="js/scan-barcode-master/jquery.js"></script>
+	<script type="text/javascript" src="js/scan-barcode-master/barcode.js"></script>
+	<script src="js/main.js"></script>
+	<!-- firebase -->
+	<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyAEHWI1MIkVavJYUInRj-5jQz6bLjX5X3Q",
+	    authDomain: "aries-5d088.firebaseapp.com",
+	    databaseURL: "https://aries-5d088.firebaseio.com",
+	    projectId: "aries-5d088",
+	    storageBucket: "aries-5d088.appspot.com",
+	    messagingSenderId: "216502949366"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+
+	<script type="text/javascript">
+
+var sound = new Audio("barcode.wav");
+
+$(document).ready(function() {
+
+	barcode.config.start = 0.1;
+	barcode.config.end = 0.9;
+	barcode.config.video = '#barcodevideo';
+	barcode.config.canvas = '#barcodecanvas';
+	barcode.config.canvasg = '#barcodecanvasg';
+	barcode.setHandler(function(barcode) {
+		$("input[name=codigo]").val(barcode);
+		$('#codigo').html(barcode);
+		
+	});
+	barcode.init();
+
+	$('#codigo').bind('DOMSubtreeModified', function(e) {
+		sound.play();	
+	});
+
+});
+
+
+
+</script>
+
+	
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2">
+				<!-- scan-barcode -->
+				<div id="barcode">
+					<video id="barcodevideo" autoplay></video>
+					<center><canvas id="barcodecanvasg" ></canvas></center>
+				</div>
+				<canvas id="barcodecanvas" ></canvas>
+				<!--<div id="result1">codigo</div>				-->
+			</div>
+			
+			
+			<div class="col-sm-4">
+				<form id="form-reg-productos">
+					<div class="form-group">
+						<label for="codigo">Codigo del producto</label>						
+					<input type="text" class="form-control" name="codigo" id="codigo" disabled>
+					</div>
+					<div class="form-group">
+						<!--<label for="descripcion">Descripcion</label>-->
+						<input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="ingrese descripcion del producto">
+					</div>
+					<div class="form-group">
+						<!--<label for="cat-prod">Categoría</label>-->
+					      <select class="form-control" name="categoria" id="categoria">
+					        <option>BEBIDAS Y FIESTA</option>
+					        <option>ASEO PERSONAL</option>
+					        <option>ABARROTES</option>
+					        <option>LIMPIEZA</option>
+					      </select>												
+					</div>
+					<div class="form-group">
+						<!--<label for="peso-prod">Peso(Kg)</label>-->
+						<input type="text" class="form-control" name="precio" id="precio" placeholder="precio">
+					</div>					
+					
+				<input type="submit" class="btn btn-primary" value="Registrar Producto" id="boton-enviar-producto"> 
+					
+				</form>
+			</div>
+
+			<div class="col-sm-1"><!-- separacion --></div>
+
+			<div class="col-sm-5">
+				<div class="text-center"><label>LISTA DE PRODUCTOS REGISTRADOS</label></div>				
+				
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Codigo</th>
+							<th>Descripción</th>
+							<th>Categoría</th>
+							<th>Precio</th>							
+						</tr>
+					</thead>
+					<tbody id="tabla-show-productos">
+						
+
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
