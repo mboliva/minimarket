@@ -339,7 +339,7 @@ var barcode = function() {
 
 	function drawBars(binary) {
 		for (var i = 0, ii = binary.length; i < ii; i++) {
-			if (binary[i] == 1) {
+			if (binary[i] == 0) {
 				elements.ctxg.strokeStyle = '#fff';
 			} else {
 				elements.ctxg.strokeStyle = '#000';
