@@ -132,7 +132,7 @@ var barcode = function() {
 		
 		// determine bar widths
 
-		var current = binary[1];
+		var current = binary[0];
 		var count = 0;
 
 		for (var i = 0, ii = binary.length; i < ii; i++) {
