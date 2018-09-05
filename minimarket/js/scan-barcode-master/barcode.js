@@ -7,7 +7,7 @@ var barcode = function() {
 	var dimensions = {
 		height: 0,
 		width: 0,
-		start: 1,
+		start: 0,
 		end: 0
 	}
 
