@@ -52,7 +52,7 @@ var barcode = function() {
 		threshold: 160,
 		quality: 0.45,
 		delay: 100,
-		video: '1',
+		video: '',
 		canvas: '',
 		canvasg: ''
 	}
@@ -96,7 +96,7 @@ var barcode = function() {
 	}
 
 	function snapshot() {
-		elements.ctx.drawImage(elements.video, 0, 0, dimensions.width, dimensions.height);
+		elements.ctx.drawImage(elements.video, 1, 1, dimensions.width, dimensions.height);
 		processImage();		
 	}
 
