@@ -154,7 +154,7 @@ var barcode = function() {
 
 		// find starting sequence
 
-		var startIndex = 0;
+		var startIndex = 1;
 		var minFactor = 0.5;
 		var maxFactor = 1.5;
 
@@ -175,7 +175,7 @@ var barcode = function() {
 
 		// return if no starting sequence found
 
-		if (startIndex == 0) {
+		if (startIndex == 1) {
 			return;
 		}
 
