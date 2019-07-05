@@ -47,8 +47,8 @@ var barcode = function() {
 
 	var config = {
 		strokeColor: '#f00',
-		start: 0,
-		end: 0,
+		start: 0.1,
+		end: 0.9,
 		threshold: 160,
 		quality: 0.45,
 		delay: 100,
